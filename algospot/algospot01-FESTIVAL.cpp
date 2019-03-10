@@ -6,22 +6,25 @@ using namespace std;
 
 void solve(int N, int L, vector<int> usages) {
     int sum = 0;
-    float avg;
-    float min = 1000.0;
+    double avg;
+    double min = 1000.0;
 
-    for(int i = L; i <= N; ++i) {
-        for(int j = 0; j <= N - i ; ++j) {
-            sum = 0;
-            for(int k = j; k < i + j; ++k) {
-                sum += usages[k];
-            }
+    for(int i = 0; i <= N - L; ++i) {
+        sum = 0;
+        for(int j = i; j < i + L - 1; ++j) {
+            sum += usages[j];
+        }
 
-            avg = (double) sum / i;
+        for (int j = i + L - 1; j < N; j++) {
+            sum += usages[j];
+            double avg = (double) sum / (j - i + 1);
             if(min > avg) {
                 min = avg;
             }
         }
     }
+    
+    // printf("%.11f\n", min);
     cout << fixed << setprecision(11) << min << endl;
 }
 
@@ -42,9 +45,6 @@ int main() {
             cin >> m;
             usages[i].push_back(m);
         }
-    }
-
-    for(int i = 0; i < cases; i++) {
         solve(days[i], teams[i], usages[i]);
     }
 

@@ -69,8 +69,7 @@ int main() {
             }
             board[j] = row;
         }
-        if (n == 0) cout << 1 << endl;
-        else if (n % 3 == 0) cout << cal(board, x, y) << endl;
+        if (n % 3 == 0) cout << cal(board, x, y) << endl;
         else cout << 0 << endl;
     }
 

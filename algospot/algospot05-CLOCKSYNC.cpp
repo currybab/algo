@@ -29,17 +29,18 @@ int cal(vector<int>& row) {
     int t3 = turn(row[6] + t4 * 3);
     int t2 = turn(row[10] + t4 * 3);
 
-    if((row[4] + t2) % 12 != row[5] % 12) {
+    if((row[4] + 3 * t2) % 12 != row[5] % 12) {
         return -1;
     }
 
-    int t7 = turn(row[7] + t1 * 3 + t3 * 3);
+    int t7 = turn(row[7] + t1 * 3 + t3 * 3 + t4 * 3);
     int t8 = turn(row[5] + 3 * (t3 + t7 + t9));
     int t0 = turn(row[1] + 3 * t8);
     int t6 = turn(row[3] + 3 * (t1 + t8 + t9));
 
     int r = (row[0] + 3 * (t0 + t3)) % 12;
     if(r != (row[2] + 3 * (t0 + t8)) % 12 || r != (row[14] + 3 * (t2 + t6 + t7)) % 12) {
+        cout << r << (row[2] + 3 * (t0 + t8)) % 12 << (row[14] + 3 * (t2 + t6 + t7)) % 12 << endl;
         return -1;
     }
     int t5 = turn(r);
@@ -60,6 +61,7 @@ int main() {
         }
 
         cout << cal(row) << endl;
+        // printf("%d\n", cal(row));
     }
 
     return 0;

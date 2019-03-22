@@ -54,6 +54,7 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "__tree": "cpp"
     }
 }
